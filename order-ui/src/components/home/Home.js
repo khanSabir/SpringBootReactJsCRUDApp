@@ -62,7 +62,7 @@ function Home() {
         </Grid.Row>
       </Grid>
 
-      <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' style={{ marginTop: '2em' }} />
+      <Image className="avatar" src='https://i.imgur.com/yXOvdOSs.jpg' style={{ marginTop: '2em' }} />
       <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' style={{ marginTop: '2em' }} />
     </Container>
   )

@@ -23,7 +23,10 @@ function authenticate(username, password) {
 
 function signup(user) {
   return instance.post('/auth/signup', user, {
-    headers: { 'Content-type': 'application/json' }
+    headers: { 'Content-type': 'application/json',
+               'Access-Control-Allow-Origin': '*',
+               'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+               'Access-Control-Request-Method': 'GET, POST, DELETE, PUT, OPTIONS'}
   })
 }
 
@@ -36,7 +39,7 @@ function numberOfOrders() {
 }
 
 function getUsers(user, username) {
-  const url = username ? `/api/users/${username}` : '/api/users'
+  const url = username ? `/api/v1/users/${username}` : '/api/v1/users'
   return instance.get(url, {
     headers: { 'Authorization': bearerAuth(user) }
   })
@@ -49,7 +52,7 @@ function deleteUser(user, username) {
 }
 
 function getOrders(user, text) {
-  const url = text ? `/api/orders?text=${text}` : '/api/orders'
+  const url = text ? `/api/orders?text=${text}` : '/api/v1/orders'
   return instance.get(url, {
     headers: { 'Authorization': bearerAuth(user) }
   })

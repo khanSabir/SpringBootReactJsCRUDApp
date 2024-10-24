@@ -1,4 +1,4 @@
-package com.dsa.tree;
+package com.ds.tree;
 
 
 public class BinarySearchTree {

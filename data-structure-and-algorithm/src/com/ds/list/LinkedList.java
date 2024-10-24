@@ -1,4 +1,4 @@
-package com.dsa.tree;
+package com.ds.list;
 
 public class LinkedList {
 	
@@ -9,37 +9,69 @@ public class LinkedList {
 		linkedList.add(10);
 		linkedList.add(15);
 		linkedList.add(11);
-		linkedList.add(9);
+		linkedList.add(19);
+		linkedList.add(12);
+		linkedList.add(35);
+		linkedList.add(89);
 		
 		linkedList.print();
 		System.out.println("After Delete");
 		linkedList.delete(15);
 		linkedList.print();
+		
+		System.out.println("Reverse");
+		linkedList.reverseList();
+		linkedList.print();
+	}
+
+	private void reverseList() {
+		Node previousNode = null;
+		Node currentNode = head;
+		Node nextNode = null;
+		
+		while(currentNode !=null) {
+			nextNode = currentNode.next;
+			currentNode.next = previousNode;	
+			previousNode=currentNode;
+			currentNode = nextNode;
+		}
+		
+		head = previousNode;
+		
 	}
 
 	private void delete(int data) {
 		Node currentNode = head;
-		if(head.data == data) {
-			head = head.next;
+		Node previous = null;
+		
+		//If head has the key;
+		if(currentNode != null && currentNode.data == data) {
+			head = currentNode.next;
+			currentNode = null;
 			return;
 		}
-		Node previous = null;
-		while(currentNode.next != null && currentNode.data != data) {
+		
+		//Search for the key to delete
+		while(currentNode != null && currentNode.data !=data) {
 			previous = currentNode;
 			currentNode = currentNode.next;
 		}
 		
-		if(currentNode.data == data) {
-			previous.next = currentNode.next;
+		//if Key was not present in the list
+		if(currentNode == null) {
+			return;
 		}
+		
+		previous.next = currentNode.next;
+		currentNode = null;
 		
 	}
 
 	private void print() {
+		Node current = head;
 		if(head == null) {
 			System.out.println("Empty List");
 		}
-		Node current = head;
 		while(current != null) {
 			System.out.println(current.data);
 			current = current.next;
